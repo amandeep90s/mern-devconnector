@@ -1,11 +1,44 @@
 const express = require("express");
 const router = express.Router();
+const passport = require("passport");
+
+// Controllers
+const {
+    userDetail,
+    userLogin,
+    userRegister,
+} = require("../../controllers/User");
 
 /**
  * @route GET api/users/test
  * @desc Test user route
  * @access Public
  */
-router.get("/test", (req, res) => res.json({ message: "Users works" }));
+router.get("/users/test", (req, res) => res.json({ message: "Users works" }));
+
+/**
+ * @route   POST api/users/register
+ * @desc    Register user
+ * @access  Public
+ */
+router.post("/users/register", userRegister);
+
+/**
+ * @route   POST api/users/login
+ * @desc    Login user / Returning JWT Token
+ * @access  Public
+ */
+router.post("/users/login", userLogin);
+
+/**
+ * @route   GET api/users/current
+ * @desc    Return current user
+ * @access  Private
+ */
+router.get(
+    "/users/current",
+    passport.authenticate("jwt", { session: false }),
+    userDetail
+);
 
 module.exports = router;

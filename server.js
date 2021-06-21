@@ -1,12 +1,21 @@
-const app = require("express")();
+const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
+const morgan = require("morgan");
+const passport = require("passport");
+const { readdirSync } = require("fs");
+require("events").EventEmitter.prototype._maxListeners = 100;
 
-const profile = require("./routes/api/profile");
-const posts = require("./routes/api/posts");
-const users = require("./routes/api/users");
+// App initialization
+const app = express();
 
-// configuration
+// Configuration
 require("dotenv").config();
+
+// Body parser middleware
+app.use(morgan("dev"));
+app.use(express.json({ limit: "2mb" }));
+app.use(cors());
 
 // Database connection
 mongoose
@@ -19,11 +28,18 @@ mongoose
     .then(() => console.log("Database connected"))
     .catch((error) => console.log(`Database error : ${error}`));
 
-// Routes
-app.use("/api/users", users);
-app.use("/api/profile", profile);
-app.use("/api/posts", posts);
+// passport middleware
+app.use(passport.initialize());
 
+// Passport config
+require("./config/passport")(passport);
+
+// Routes
+readdirSync("./routes/api").map((r) =>
+    app.use("/api", require("./routes/api/" + r))
+);
+
+// Port
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
