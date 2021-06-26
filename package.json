@@ -4,13 +4,17 @@
     "description": "Social application for developers",
     "main": "server.js",
     "scripts": {
+        "client-install": "yarn install --prefix client",
         "start": "node server.js",
-        "server": "nodemon server.js"
+        "server": "nodemon server.js",
+        "client": "npm start --prefix client",
+        "dev": "concurrently \"npm run server\" \"npm run client\""
     },
     "author": "Amandeep Singh",
     "license": "ISC",
     "dependencies": {
         "bcryptjs": "^2.4.3",
+        "concurrently": "^6.2.0",
         "cors": "^2.8.5",
         "dotenv": "^10.0.0",
         "express": "^4.17.1",
