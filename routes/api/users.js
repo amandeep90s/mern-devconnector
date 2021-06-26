@@ -10,13 +10,6 @@ const {
 } = require("../../controllers/User");
 
 /**
- * @route GET api/users/test
- * @desc Test user route
- * @access Public
- */
-router.get("/users/test", (req, res) => res.json({ message: "Users works" }));
-
-/**
  * @route   POST api/users/register
  * @desc    Register user
  * @access  Public

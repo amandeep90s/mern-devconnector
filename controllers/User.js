@@ -1,7 +1,9 @@
-const User = require("../models/User");
 const gravatar = require("gravatar");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+
+// Load user model
+const User = require("../models/User");
 
 // Load input validation
 const validateRegisterInput = require("../validation/register");
