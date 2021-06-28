@@ -1,5 +1,5 @@
-import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import React, { Suspense, lazy } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 // components
 import Navbar from "./components/layout/Navbar";
