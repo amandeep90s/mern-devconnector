@@ -32,8 +32,8 @@ const Navbar = () => {
 
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <Link className="nav-link" to="/signup">
-                                Sign Up
+                            <Link className="nav-link" to="/register">
+                                Register
                             </Link>
                         </li>
                         <li className="nav-item">
