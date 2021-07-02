@@ -2,10 +2,12 @@ import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 
-import { GET_ERRORS, SET_CURRENT_USER } from "./constants";
+import { GET_ERRORS, CLEAR_ERRORS, SET_CURRENT_USER } from "./constants";
 
 // register user
 export const registerUser = (userData, history) => (dispatch) => {
+    dispatch(clearErrors());
+
     axios
         .post(`${process.env.REACT_APP_API_URL}/users/register`, userData)
         .then(() => history.push("/login"))
@@ -19,6 +21,8 @@ export const registerUser = (userData, history) => (dispatch) => {
 
 // login user - get token
 export const loginUser = (userData) => (dispatch) => {
+    dispatch(clearErrors());
+
     axios
         .post(`${process.env.REACT_APP_API_URL}/users/login`, userData)
         .then((res) => {
@@ -56,4 +60,11 @@ export const logoutUser = () => (dispatch) => {
     setAuthToken(false);
     // set current user to {} which will set isAuthenticated to false
     dispatch(setCurrentUser({}));
+};
+
+// clear errors
+export const clearErrors = () => {
+    return {
+        type: CLEAR_ERRORS,
+    };
 };

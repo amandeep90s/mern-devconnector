@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-const Landing = () => {
+const Landing = ({ history }) => {
+    const { auth } = useSelector((state) => ({ ...state }));
+
+    useEffect(() => {
+        if (auth.isAuthenticated) history.push("/dashboard");
+    }, [auth, history]);
+
     return (
         <div className="landing">
             <div className="dark-overlay landing-inner text-light">

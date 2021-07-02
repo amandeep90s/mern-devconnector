@@ -14,7 +14,7 @@ const TextFieldGroup = ({
     disabled,
 }) => {
     return (
-        <div className="form-group">
+        <div className="mb-3">
             {label && <label className="form-label">{label}</label>}
             <input
                 type={type}
@@ -26,6 +26,7 @@ const TextFieldGroup = ({
                 value={value}
                 onChange={onChange}
                 disabled={disabled}
+                autoComplete="off"
             />
 
             {info && <small className="form-text text-muted">{info}</small>}
