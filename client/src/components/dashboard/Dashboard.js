@@ -58,7 +58,7 @@ const Dashboard = () => {
                     You have not yet setup a profile, please add some
                     information
                 </p>
-                <Link to="/create-profile" className="btn btn-lg btn-info">
+                <Link to="/create-profile" className="btn btn-info">
                     Create Profile
                 </Link>
             </>

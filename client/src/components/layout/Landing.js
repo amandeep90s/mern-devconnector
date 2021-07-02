@@ -23,13 +23,10 @@ const Landing = ({ history }) => {
                                 posts and get help from other developers
                             </p>
                             <hr />
-                            <Link
-                                to="/register"
-                                className="btn btn-lg btn-info me-2"
-                            >
+                            <Link to="/register" className="btn btn-info me-2">
                                 Register
                             </Link>
-                            <Link to="/login" className="btn btn-lg btn-light">
+                            <Link to="/login" className="btn btn-light">
                                 Login
                             </Link>
                         </div>

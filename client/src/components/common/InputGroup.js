@@ -14,14 +14,17 @@ const InputGroup = ({
     return (
         <div className="input-group mb-3">
             <div className="input-group-required">
-                <span className="input-group-text">
-                    <i className={icon}></i>
+                <span
+                    className="input-group-text"
+                    style={{ minHeight: "2.4rem" }}
+                >
+                    {icon}
                 </span>
             </div>
 
             <input
                 type={type}
-                className={classnames("form-control form-control-lg", {
+                className={classnames("form-control", {
                     "is-invalid": error,
                 })}
                 placeholder={placeholder}
@@ -38,7 +41,7 @@ InputGroup.propTypes = {
     name: PropTypes.string.isRequired,
     placeholder: PropTypes.string,
     value: PropTypes.string.isRequired,
-    icon: PropTypes.string,
+    icon: PropTypes.node,
     error: PropTypes.string,
     type: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
