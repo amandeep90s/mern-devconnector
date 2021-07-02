@@ -34,7 +34,7 @@ const Navbar = () => {
                         src={user.avatar}
                         alt={user.name}
                         className="rounded-circle"
-                        style={{ width: "2rem", marginRight: "0.5rem" }}
+                        style={{ width: "1.5rem", marginRight: "0.5rem" }}
                         title="You must have a Gravatar connected to your email to display an image"
                     />{" "}
                     Logout

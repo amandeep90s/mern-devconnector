@@ -69,7 +69,7 @@ const App = () => {
             <div className="App">
                 <Navbar />
                 <Route exact path="/" component={Landing} />
-                <div className="container">
+                <div className="container mb-5">
                     <Switch>
                         <Route exact path="/register" component={Register} />
                         <Route exact path="/login" component={Login} />
