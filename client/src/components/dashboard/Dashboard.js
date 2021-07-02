@@ -6,6 +6,7 @@ import ProfileActions from "./ProfileActions";
 import Experience from "./Experience";
 import Education from "./Education";
 import { getCurrentProfile, deleteAccount } from "../../actions/profileActions";
+import { DeleteOutlined } from "@ant-design/icons";
 
 const Dashboard = () => {
     const {
@@ -42,8 +43,9 @@ const Dashboard = () => {
                 <div className="mt-4">
                     <button
                         onClick={handleDelete}
-                        className="btn btn-danger text-capitalize"
+                        className="d-flex align-items-center btn btn-danger text-capitalize"
                     >
+                        <DeleteOutlined className="me-2" />
                         Delete my account
                     </button>
                 </div>
