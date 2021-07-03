@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
-import Moment from "moment";
+import moment from "moment";
 import { deleteEducation } from "../../actions/profileActions";
 import { DeleteOutlined } from "@ant-design/icons";
 
@@ -16,20 +16,19 @@ const Education = ({ education }) => {
         <tr key={value._id}>
             <td>{value.school}</td>
             <td>{value.degree}</td>
+            <td>{value.fieldOfStudy}</td>
             <td>
-                <Moment format="YYYY/MM/DD">{value.from}</Moment> -
-                {value.to === null ? (
-                    " Now"
-                ) : (
-                    <Moment format="YYYY/MM/DD">{value.to}</Moment>
-                )}
+                {moment(value.from).format("YYYY/MM/DD")} -
+                {value.to === null
+                    ? " Now"
+                    : moment(value.to).format("YYYY/MM/DD")}
             </td>
             <td>
-                <button className="d-flex align-items-center btn btn-danger">
-                    <DeleteOutlined
-                        className="me-2"
-                        onClick={() => handleDelete(value._id)}
-                    />
+                <button
+                    className="d-flex align-items-center btn btn-danger"
+                    onClick={() => handleDelete(value._id)}
+                >
+                    <DeleteOutlined className="me-2" />
                     Delete
                 </button>
             </td>
@@ -44,6 +43,7 @@ const Education = ({ education }) => {
                     <tr>
                         <th>School</th>
                         <th>Degree</th>
+                        <th>Field of Study</th>
                         <th>Years</th>
                         <th>Action</th>
                     </tr>
@@ -55,7 +55,7 @@ const Education = ({ education }) => {
 };
 
 Education.propTypes = {
-    education: PropTypes.func.isRequired,
+    education: PropTypes.array.isRequired,
 };
 
 export default Education;

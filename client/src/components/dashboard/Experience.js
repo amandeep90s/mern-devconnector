@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
-import Moment from "moment";
+import moment from "moment";
 import { deleteExperience } from "../../actions/profileActions";
 import { DeleteOutlined } from "@ant-design/icons";
 
@@ -17,16 +17,14 @@ const Experience = ({ experience }) => {
             <td>{value.company}</td>
             <td>{value.title}</td>
             <td>
-                <Moment format="YYYY/MM/DD">{value.from}</Moment> -
-                {value.to === null ? (
-                    " Now"
-                ) : (
-                    <Moment format="YYYY/MM/DD">{value.to}</Moment>
-                )}
+                {moment(value.from).format("YYYY/MM/DD")} -
+                {value.to === null
+                    ? " Now"
+                    : moment(value.to).format("YYYY/MM/DD")}
             </td>
             <td>
                 <button
-                    onClick={this.onDeleteClick.bind(this, value._id)}
+                    onClick={() => handleDelete(value._id)}
                     className="d-flex align-items-center btn btn-danger"
                 >
                     <DeleteOutlined className="me-2" />
@@ -54,7 +52,7 @@ const Experience = ({ experience }) => {
 };
 
 Experience.propTypes = {
-    experience: PropTypes.func.isRequired,
+    experience: PropTypes.array.isRequired,
 };
 
 export default Experience;
