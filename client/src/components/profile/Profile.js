@@ -39,8 +39,8 @@ const Profile = ({ history, match }) => {
                 <ProfileHeader profile={profile} />
                 <ProfileAbout profile={profile} />
                 <ProfileCreds
-                    education={profile.education}
-                    experience={profile.experience}
+                    education={profile !== null ? profile.education : []}
+                    experience={profile !== null ? profile.experience : []}
                 />
                 {profile.githubUsername && (
                     <ProfileGithub username={profile.githubUsername} />
@@ -50,8 +50,10 @@ const Profile = ({ history, match }) => {
     }
 
     return (
-        <div className="row">
-            <div className="col-md-12">{profileContent}</div>
+        <div className="container">
+            <div className="row">
+                <div className="col-md-12">{profileContent}</div>
+            </div>
         </div>
     );
 };

@@ -23,10 +23,12 @@ const Posts = () => {
     }
 
     return (
-        <div className="row">
-            <div className="col-md-12">
-                <PostForm />
-                {postContent}
+        <div className="container">
+            <div className="row">
+                <div className="col-md-12">
+                    <PostForm />
+                    {postContent}
+                </div>
             </div>
         </div>
     );

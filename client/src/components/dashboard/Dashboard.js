@@ -68,10 +68,12 @@ const Dashboard = () => {
     }
 
     return (
-        <div className="row">
-            <div className="col-md-12">
-                <h4>Dashboard</h4>
-                {dashboardContent}
+        <div className="container">
+            <div className="row">
+                <div className="col-md-12">
+                    <h4>Dashboard</h4>
+                    {dashboardContent}
+                </div>
             </div>
         </div>
     );

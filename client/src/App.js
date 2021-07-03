@@ -68,9 +68,9 @@ const App = () => {
         >
             <div className="App">
                 <Navbar />
-                <Route exact path="/" component={Landing} />
-                <div className="container mb-5">
+                <div className="w-100 mb-5">
                     <Switch>
+                        <Route exact path="/" component={Landing} />
                         <Route exact path="/register" component={Register} />
                         <Route exact path="/login" component={Login} />
                         <PrivateRoute

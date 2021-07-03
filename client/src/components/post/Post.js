@@ -33,13 +33,15 @@ const Post = ({ match }) => {
     }
 
     return (
-        <div className="row">
-            <div className="col-md-12">
-                <Link to="/feed" className="btn btn-primary mb-3">
-                    Back To Feed
-                </Link>
+        <div className="container">
+            <div className="row">
+                <div className="col-md-12">
+                    <Link to="/feed" className="btn btn-primary mb-3">
+                        Back To Feed
+                    </Link>
 
-                {postContent}
+                    {postContent}
+                </div>
             </div>
         </div>
     );

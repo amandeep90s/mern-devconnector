@@ -184,116 +184,118 @@ const EditProfile = ({ history }) => {
     ];
 
     return (
-        <div className="row d-flex justify-content-center">
-            <div className="col-md-8">
-                <div className="d-flex justify-content-between align-items-center">
-                    <h4>Edit Profile</h4>
-                    <Link to="/dashboard" className="btn btn-primary">
-                        Go Back
-                    </Link>
-                </div>
-                <small className="d-block pb-3">* = required fields</small>
-
-                <form onSubmit={handleSubmit}>
-                    <TextFieldGroup
-                        placeholder="* Profile Handle"
-                        name="handle"
-                        value={state.handle}
-                        onChange={handleChange}
-                        error={errors.handle}
-                        info="A unique handle for your profile url. Your full name, company name, nickname"
-                    />
-
-                    <SelectListGroup
-                        placeholder="Status"
-                        name="status"
-                        value={state.status}
-                        onChange={handleChange}
-                        options={options}
-                        error={errors.status}
-                        info="Give us an idea of where your are at in your career"
-                    />
-
-                    <TextFieldGroup
-                        placeholder="Company"
-                        name="company"
-                        value={state.company}
-                        onChange={handleChange}
-                        error={errors.company}
-                        info="Could be your own company or one you work for"
-                    />
-
-                    <TextFieldGroup
-                        placeholder="Website"
-                        name="website"
-                        value={state.website}
-                        onChange={handleChange}
-                        error={errors.website}
-                        info="Could be your own website or a company one"
-                    />
-
-                    <TextFieldGroup
-                        placeholder="Location"
-                        name="location"
-                        value={state.location}
-                        onChange={handleChange}
-                        error={errors.location}
-                        info="City or city & state suggested (eg. Pathankot, PB)"
-                    />
-
-                    <TextFieldGroup
-                        placeholder="* Skills"
-                        name="skills"
-                        value={state.skills}
-                        onChange={handleChange}
-                        error={errors.skills}
-                        info="Please use comma separated values (eg. HTML,CSS,Javascript,PHP)"
-                    />
-
-                    <TextFieldGroup
-                        placeholder="Github Username"
-                        name="githubUsername"
-                        value={state.githubUsername}
-                        onChange={handleChange}
-                        error={errors.githubUsername}
-                        info="If you want your latest repositories and a Github link, include your username"
-                    />
-
-                    <TextAreaFieldGroup
-                        placeholder="Short Bio"
-                        name="bio"
-                        value={state.bio}
-                        onChange={handleChange}
-                        error={errors.bio}
-                        info="Tell us a little about yourself"
-                    />
-
-                    <div className="my-3">
-                        <button
-                            type="button"
-                            onClick={() =>
-                                setState({
-                                    ...state,
-                                    displaySocialInputs:
-                                        !state.displaySocialInputs,
-                                })
-                            }
-                            className="btn btn-secondary"
-                        >
-                            Add Social Network Links
-                        </button>
-                        <br />
-                        <span className="text-muted">Optional</span>
+        <div className="container">
+            <div className="row d-flex justify-content-center">
+                <div className="col-md-8">
+                    <div className="d-flex justify-content-between align-items-center">
+                        <h4>Edit Profile</h4>
+                        <Link to="/dashboard" className="btn btn-primary">
+                            Go Back
+                        </Link>
                     </div>
-                    {socialInputs}
-                    <div className="d-grid">
-                        <input
-                            type="submit"
-                            value="Submit"
-                            className="btn btn-info mt-4"
+                    <small className="d-block pb-3">* = required fields</small>
+
+                    <form onSubmit={handleSubmit}>
+                        <TextFieldGroup
+                            placeholder="* Profile Handle"
+                            name="handle"
+                            value={state.handle}
+                            onChange={handleChange}
+                            error={errors.handle}
+                            info="A unique handle for your profile url. Your full name, company name, nickname"
                         />
-                    </div>
-                </form>
+
+                        <SelectListGroup
+                            placeholder="Status"
+                            name="status"
+                            value={state.status}
+                            onChange={handleChange}
+                            options={options}
+                            error={errors.status}
+                            info="Give us an idea of where your are at in your career"
+                        />
+
+                        <TextFieldGroup
+                            placeholder="Company"
+                            name="company"
+                            value={state.company}
+                            onChange={handleChange}
+                            error={errors.company}
+                            info="Could be your own company or one you work for"
+                        />
+
+                        <TextFieldGroup
+                            placeholder="Website"
+                            name="website"
+                            value={state.website}
+                            onChange={handleChange}
+                            error={errors.website}
+                            info="Could be your own website or a company one"
+                        />
+
+                        <TextFieldGroup
+                            placeholder="Location"
+                            name="location"
+                            value={state.location}
+                            onChange={handleChange}
+                            error={errors.location}
+                            info="City or city & state suggested (eg. Pathankot, PB)"
+                        />
+
+                        <TextFieldGroup
+                            placeholder="* Skills"
+                            name="skills"
+                            value={state.skills}
+                            onChange={handleChange}
+                            error={errors.skills}
+                            info="Please use comma separated values (eg. HTML,CSS,Javascript,PHP)"
+                        />
+
+                        <TextFieldGroup
+                            placeholder="Github Username"
+                            name="githubUsername"
+                            value={state.githubUsername}
+                            onChange={handleChange}
+                            error={errors.githubUsername}
+                            info="If you want your latest repositories and a Github link, include your username"
+                        />
+
+                        <TextAreaFieldGroup
+                            placeholder="Short Bio"
+                            name="bio"
+                            value={state.bio}
+                            onChange={handleChange}
+                            error={errors.bio}
+                            info="Tell us a little about yourself"
+                        />
+
+                        <div className="my-3">
+                            <button
+                                type="button"
+                                onClick={() =>
+                                    setState({
+                                        ...state,
+                                        displaySocialInputs:
+                                            !state.displaySocialInputs,
+                                    })
+                                }
+                                className="btn btn-secondary"
+                            >
+                                Add Social Network Links
+                            </button>
+                            <br />
+                            <span className="text-muted">Optional</span>
+                        </div>
+                        {socialInputs}
+                        <div className="d-grid">
+                            <input
+                                type="submit"
+                                value="Submit"
+                                className="btn btn-info mt-4"
+                            />
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     );

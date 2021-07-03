@@ -26,14 +26,16 @@ const Profiles = () => {
     }
 
     return (
-        <div className="row">
-            <div className="col-md-12">
-                <h4 className="text-center">Developer Profiles</h4>
-                <p className="lead text-center">
-                    Browse and connect with developers
-                </p>
+        <div className="container">
+            <div className="row">
+                <div className="col-md-12">
+                    <h4 className="text-center">Developer Profiles</h4>
+                    <p className="lead text-center">
+                        Browse and connect with developers
+                    </p>
 
-                {profileItems}
+                    {profileItems}
+                </div>
             </div>
         </div>
     );
