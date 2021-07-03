@@ -6,27 +6,30 @@ const initialState = {
     clientSecret: process.env.REACT_APP_SECRET_ID,
     count: 5,
     sort: "created: asc",
-    repositories: [],
 };
 
 const ProfileGithub = ({ username }) => {
     const [state, setState] = useState(initialState);
+    const [repositories, setRepositories] = useState([]);
     const myRef = useRef(null);
+    const url = `https://api.github.com/users/${username}/repos?per_page=${state.count}&sort=${state.sort}&client_id=${state.clientId}&client_secret=${state.clientSecret}`;
 
     useEffect(() => {
-        fetch(
-            `https://api.github.com/users/${username}/repos?per_page=${state.count}&sort=${state.sort}&client_id=${state.clientId}&client_secret=${state.clientSecret}`
-        )
+        fetch(url)
             .then((res) => res.json())
             .then((data) => {
                 if (myRef) {
-                    setState({ ...state, repositories: data });
+                    setRepositories(data);
                 }
             })
             .catch((err) => console.log(err));
-    });
 
-    const repoItems = state.repositories.map((repo) => (
+        return () => {
+            setState(initialState);
+        };
+    }, [username, url]);
+
+    const repoItems = repositories.map((repo) => (
         <div key={repo.id} className="card card-body mb-2">
             <div className="row d-flex align-items-center">
                 <div className="col-md-6">
