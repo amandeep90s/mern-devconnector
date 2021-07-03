@@ -12,7 +12,7 @@ import {
     CommentOutlined,
 } from "@ant-design/icons";
 
-const PostItem = ({ post }) => {
+const PostItem = ({ post, showActions }) => {
     const dispatch = useDispatch();
     const { auth } = useSelector((state) => ({ ...state }));
 
@@ -51,56 +51,59 @@ const PostItem = ({ post }) => {
 
                 <div className="col-md-10">
                     <p className="lead">{post.text}</p>
-                    <div className="d-flex justify-content-start">
-                        <button
-                            type="button"
-                            onClick={() => handleLike(post._id)}
-                            className="btn btn-success d-flex  align-items-center me-2"
-                            title="Like Post"
-                        >
-                            {findUserLike(post.likes) ? (
-                                <LikeFilled className="text-white me-2" />
-                            ) : (
-                                <LikeOutlined className="text-white me-2" />
-                            )}{" "}
-                            Like
-                            <span className="badge bg-white text-dark ms-2">
-                                {post.likes.length}
-                            </span>
-                        </button>
-
-                        <button
-                            type="button"
-                            onClick={() => handleRemoveLike(post._id)}
-                            className="btn btn-dark d-flex align-items-center me-2"
-                            title="Unlike Post"
-                        >
-                            {findUserLike(post.likes) ? (
-                                <DislikeOutlined className="text-white me-2" />
-                            ) : (
-                                <DislikeFilled className="text-white me-2" />
-                            )}{" "}
-                            Unlike
-                        </button>
-
-                        <Link
-                            to={`/post/${post._id}`}
-                            className="btn btn-info d-flex align-items-center me-2"
-                        >
-                            <CommentOutlined className="me-2" />
-                            Comments
-                        </Link>
-
-                        {post.user === auth.user.id && (
+                    {showActions && (
+                        <div className="d-flex justify-content-start">
                             <button
                                 type="button"
-                                className="btn btn-danger d-flex align-items-center"
-                                onClick={() => handleDelete(post._id)}
+                                onClick={() => handleLike(post._id)}
+                                className="btn btn-success d-flex  align-items-center me-2"
+                                title="Like Post"
                             >
-                                <DeleteOutlined className="me-2" /> Delete Post
+                                {findUserLike(post.likes) ? (
+                                    <LikeFilled className="text-white me-2" />
+                                ) : (
+                                    <LikeOutlined className="text-white me-2" />
+                                )}{" "}
+                                Like
+                                <span className="badge bg-white text-dark ms-2">
+                                    {post.likes.length}
+                                </span>
                             </button>
-                        )}
-                    </div>
+
+                            <button
+                                type="button"
+                                onClick={() => handleRemoveLike(post._id)}
+                                className="btn btn-dark d-flex align-items-center me-2"
+                                title="Unlike Post"
+                            >
+                                {findUserLike(post.likes) ? (
+                                    <DislikeOutlined className="text-white me-2" />
+                                ) : (
+                                    <DislikeFilled className="text-white me-2" />
+                                )}{" "}
+                                Unlike
+                            </button>
+
+                            <Link
+                                to={`/post/${post._id}`}
+                                className="btn btn-info d-flex align-items-center me-2"
+                            >
+                                <CommentOutlined className="me-2" />
+                                Comments
+                            </Link>
+
+                            {post.user === auth.user.id && (
+                                <button
+                                    type="button"
+                                    className="btn btn-danger d-flex align-items-center"
+                                    onClick={() => handleDelete(post._id)}
+                                >
+                                    <DeleteOutlined className="me-2" /> Delete
+                                    Post
+                                </button>
+                            )}
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
@@ -109,6 +112,11 @@ const PostItem = ({ post }) => {
 
 PostItem.propTypes = {
     post: PropTypes.object.isRequired,
+    showActions: PropTypes.bool,
+};
+
+PostItem.defaultProps = {
+    showActions: true,
 };
 
 export default PostItem;

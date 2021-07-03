@@ -35,6 +35,7 @@ export const postReducer = (state = initialState, action) => {
             return {
                 ...state,
                 posts: [action.payload, ...state.posts],
+                loading: false,
             };
         case DELETE_POST:
             return {
@@ -42,6 +43,7 @@ export const postReducer = (state = initialState, action) => {
                 posts: state.posts.filter(
                     (post) => post._id !== action.payload
                 ),
+                loading: false,
             };
 
         default:

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addPost, getPosts } from "../../actions/postActions";
+import { addPost } from "../../actions/postActions";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 
 const PostForm = () => {
@@ -20,7 +20,6 @@ const PostForm = () => {
             avatar: user.avatar,
         };
         dispatch(addPost(newPost));
-        dispatch(getPosts());
         setText("");
     };
 
