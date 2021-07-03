@@ -1,7 +1,20 @@
 import React from "react";
+import PropTypes from "prop-types";
+import CommentItem from "./CommentItem";
 
-const CommentFeed = () => {
-    return <div></div>;
+const CommentFeed = ({ comments, postId }) => {
+    return comments.map((comment) => (
+        <CommentItem
+            key={comment._id}
+            comment={comment}
+            postId={postId}
+        ></CommentItem>
+    ));
+};
+
+CommentFeed.propTypes = {
+    comments: PropTypes.array.isRequired,
+    postId: PropTypes.string.isRequired,
 };
 
 export default CommentFeed;

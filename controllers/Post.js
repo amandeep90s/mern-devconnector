@@ -171,8 +171,7 @@ exports.deleteComment = (req, res) => {
             // check to see if comment exists
             if (
                 post.comments.filter(
-                    (comment) =>
-                        comment._id.toString() === req.params.comment_id
+                    (comment) => comment._id.toString() === req.params.commentId
                 ).length === 0
             ) {
                 return res
@@ -183,7 +182,7 @@ exports.deleteComment = (req, res) => {
             // get remove index
             const removeIndex = post.comments
                 .map((item) => item._id.toString())
-                .indexOf(req.params.comment_id);
+                .indexOf(req.params.commentId);
 
             // splice comment out of array
             post.comments.splice(removeIndex, 1);

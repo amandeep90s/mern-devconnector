@@ -62,13 +62,13 @@ router.post("/posts/unlike/:id", middleware, unlikePost);
  * @desc    Add comment to post
  * @access  Private
  */
-router.get("/posts/comment/:id", middleware, createComment);
+router.post("/posts/comment/:id", middleware, createComment);
 
 /**
  * @route   DELETE api/posts/comment/:id/:commentId
  * @desc    Remove comment from post
  * @access  Private
  */
-router.get("/posts/comment/:id/:commentId", middleware, deleteComment);
+router.delete("/posts/comment/:id/:commentId", middleware, deleteComment);
 
 module.exports = router;

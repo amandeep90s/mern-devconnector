@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import classnames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
 import { addLike, deletePost, removeLike } from "../../actions/postActions";
 import {
@@ -38,7 +39,11 @@ const PostItem = ({ post, showActions }) => {
 
     return (
         <div className="card card-body mb-3">
-            <div className="row">
+            <div
+                className={classnames("row", {
+                    "d-flex align-items-center": !showActions,
+                })}
+            >
                 <div className="col-md-2">
                     <img
                         className="rounded-circle d-md-block"
@@ -90,6 +95,9 @@ const PostItem = ({ post, showActions }) => {
                             >
                                 <CommentOutlined className="me-2" />
                                 Comments
+                                <span className="badge bg-white text-dark ms-2">
+                                    {post.comments.length}
+                                </span>
                             </Link>
 
                             {post.user === auth.user.id && (
