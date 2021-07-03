@@ -53,7 +53,7 @@ const App = () => {
                 // clear current profile
                 dispatch(clearCurrentProfile());
                 // redirect to login
-                window.location.href = "./login";
+                window.location.href = "/login";
             }
         }
     }, [dispatch]);

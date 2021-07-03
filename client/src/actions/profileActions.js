@@ -31,7 +31,7 @@ export const getCurrentProfile = () => (dispatch) => {
 };
 
 // get profile by  handle
-export const getProfileByHandle = (handle) => (dispatch) => {
+export const getProfileByHandle = (handle, history) => (dispatch) => {
     dispatch(setProfileLoading());
 
     axios
@@ -42,12 +42,13 @@ export const getProfileByHandle = (handle) => (dispatch) => {
                 payload: res.data,
             })
         )
-        .catch(() =>
+        .catch(() => {
             dispatch({
                 type: GET_PROFILE,
                 payload: null,
-            })
-        );
+            });
+            history.push("/not-found");
+        });
 };
 
 // create profile

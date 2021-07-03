@@ -168,6 +168,15 @@ const CreateProfile = ({ history }) => {
                     />
 
                     <TextFieldGroup
+                        placeholder="Website"
+                        name="website"
+                        value={state.website}
+                        onChange={handleChange}
+                        error={errors.website}
+                        info="Could be your own website or a company one"
+                    />
+
+                    <TextFieldGroup
                         placeholder="Location"
                         name="location"
                         value={state.location}
