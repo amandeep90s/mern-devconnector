@@ -16,6 +16,7 @@ const Experience = ({ experience }) => {
         <tr key={value._id}>
             <td>{value.company}</td>
             <td>{value.title}</td>
+            <td>{value.location}</td>
             <td>
                 {moment(value.from).format("YYYY/MM/DD")} -
                 {value.to === null
@@ -25,7 +26,7 @@ const Experience = ({ experience }) => {
             <td>
                 <button
                     onClick={() => handleDelete(value._id)}
-                    className="d-flex align-items-center btn btn-danger"
+                    className="d-flex align-items-center btn btn-danger btn-sm"
                 >
                     <DeleteOutlined className="me-2" />
                     Delete
@@ -41,6 +42,7 @@ const Experience = ({ experience }) => {
                     <tr>
                         <th>Company</th>
                         <th>Title</th>
+                        <th>Location</th>
                         <th>Years</th>
                         <th>Action</th>
                     </tr>

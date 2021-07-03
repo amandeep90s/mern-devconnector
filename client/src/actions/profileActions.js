@@ -3,6 +3,7 @@ import axios from "axios";
 import {
     CLEAR_CURRENT_PROFILE,
     GET_ERRORS,
+    CLEAR_ERRORS,
     GET_PROFILE,
     GET_PROFILES,
     PROFILE_LOADING,
@@ -51,6 +52,8 @@ export const getProfileByHandle = (handle) => (dispatch) => {
 
 // create profile
 export const createProfile = (profileData, history) => (dispatch) => {
+    dispatch(clearErrors());
+
     axios
         .post(`${process.env.REACT_APP_API_URL}/profile`, profileData)
         .then(() => history.push("/dashboard"))
@@ -64,6 +67,8 @@ export const createProfile = (profileData, history) => (dispatch) => {
 
 // add experience
 export const addExperience = (expData, history) => (dispatch) => {
+    dispatch(clearErrors());
+
     axios
         .post(`${process.env.REACT_APP_API_URL}/profile/experience`, expData)
         .then(() => history.push("/dashboard"))
@@ -77,6 +82,8 @@ export const addExperience = (expData, history) => (dispatch) => {
 
 // add education
 export const addEducation = (eduData, history) => (dispatch) => {
+    dispatch(clearErrors());
+
     axios
         .post(`${process.env.REACT_APP_API_URL}/profile/education`, eduData)
         .then(() => history.push("/dashboard"))
@@ -173,5 +180,12 @@ export const setProfileLoading = () => {
 export const clearCurrentProfile = () => {
     return {
         type: CLEAR_CURRENT_PROFILE,
+    };
+};
+
+// clear errors
+export const clearErrors = () => {
+    return {
+        type: CLEAR_ERRORS,
     };
 };

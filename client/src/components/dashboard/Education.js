@@ -25,7 +25,7 @@ const Education = ({ education }) => {
             </td>
             <td>
                 <button
-                    className="d-flex align-items-center btn btn-danger"
+                    className="d-flex align-items-center btn btn-danger btn-sm"
                     onClick={() => handleDelete(value._id)}
                 >
                     <DeleteOutlined className="me-2" />

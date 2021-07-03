@@ -186,11 +186,12 @@ const EditProfile = ({ history }) => {
     return (
         <div className="row d-flex justify-content-center">
             <div className="col-md-8">
-                <Link to="/dashboard" className="btn btn-primary">
-                    Go Back
-                </Link>
-
-                <h4>Edit Profile</h4>
+                <div className="d-flex justify-content-between align-items-center">
+                    <h4>Edit Profile</h4>
+                    <Link to="/dashboard" className="btn btn-primary">
+                        Go Back
+                    </Link>
+                </div>
                 <small className="d-block pb-3">* = required fields</small>
 
                 <form onSubmit={handleSubmit}>
